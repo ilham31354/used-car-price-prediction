@@ -8,13 +8,7 @@ from PIL import Image
 # loading the saved model
 loaded_model = pickle.load(open("./web-app/model/lr_model.sav", 'rb'))
 
-# Using PMML
-# loaded_model = Model.fromFile('C:/Users/ilham/Notebook/Used car price prediction/Web App/lr_model.pmml')
-
-
-
 # creating a function for Prediction
-
 def used_car_price_prediction_with_sav(input_data):
     # changing the input_data to numpy array
     input_data_as_numpy_array = np.asarray(input_data)
