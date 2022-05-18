@@ -6,7 +6,7 @@ from PIL import Image
 
 
 # loading the saved model
-loaded_model = pickle.load(open("C:/Users/ilham/Notebook/Used car price prediction/Web App/model/lr_model.sav", 'rb'))
+loaded_model = pickle.load(open("web-app/model/lr_model.sav", 'rb'))
 
 
 # creating a function for Prediction
