@@ -22,7 +22,7 @@ def used_car_price_prediction_with_sav(input_data):
   
 def main():
     
-    st.set_page_config(layout='wide', page_title="INPO MASZEEHHH", page_icon="🚗")
+    st.set_page_config(layout='wide', page_title="INPO MASZEEHHH", page_icon="😱")
 
     # giving a title
     header = Image.open('./web-app/images/header.png')
