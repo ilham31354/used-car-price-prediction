@@ -31,7 +31,7 @@ def main():
     st.set_page_config(layout='wide', page_title="INPO MASZEEHHH", page_icon="🚗")
 
     # giving a title
-    header = Image.open('./web-app/images/header2.png')
+    header = Image.open('./web-app/images/header.png')
   
     st.image(header)
     st.title('Used Car Price Prediction Web App')
