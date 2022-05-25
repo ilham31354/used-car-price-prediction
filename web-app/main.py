@@ -6,13 +6,17 @@ import rpy2.robjects as robjects
 import rpy2.robjects.packages as rpackages
 from rpy2.robjects.vectors import StrVector
 
-base = rpackages.importr('base')
-utils = rpackages.importr('utils')
+
+robjects.r('dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE)')  # create personal library
+robjects.r('.libPaths(Sys.getenv("R_LIBS_USER"))')
+robjects.r('install.packages("randomForest")')
+robjects.r('library(randomForest)')
+
 
 # loading the saved model
-randomForest = robjects.r('install.packages("random")')
+# randomForest = robjects.r('install.packages("random")')
 
-randomForest = rpackages.importr('randomForest')
+# randomForest = rpackages.importr('randomForest')
 loaded_model = robjects.r('model = readRDS(".//web-app//model//rf_model.rda")')
 
 
