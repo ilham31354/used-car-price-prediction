@@ -1,31 +1,31 @@
 import numpy as np
-import pickle
 import streamlit as st
 from PIL import Image
-
+import rpy2.robjects as robjects
+import rpy2.robjects.packages as rpackages
+from rpy2.robjects.vectors import StrVector
 
 
 # loading the saved model
-loaded_model = pickle.load(open("./web-app/model/lr_model.sav", 'rb'))
+randomForest = rpackages.importr('randomForest')
+loaded_model = robjects.r('model = readRDS(".//web-app//model//rf_model.rda")')
+
 
 # creating a function for Prediction
-def used_car_price_prediction_with_sav(input_data):
-    # changing the input_data to numpy array
-    input_data_as_numpy_array = np.asarray(input_data)
 
-    # reshape the array as we are predicting for one instance
-    input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
-    prediction = loaded_model.predict(input_data_reshaped)
-    print(prediction)
-    return f"The price will be around ${round(prediction[0],2)}" 
+def used_car_price_prediction(km_driven, mileage, engine, max_power, seats, age, fuel_CNG, fuel_Diesel, fuel_LPG, seller_type_Dealer, transmission_Automatic, owner1st, owner4th, owner2nd):
+    data = f"new_data = data.frame(km_driven={km_driven},mileage={mileage},engine={engine},max_power={max_power},seats={seats},age={age},fuel_CNG={fuel_CNG},fuel_Diesel={fuel_Diesel},fuel_LPG={fuel_LPG},seller_type_Dealer={seller_type_Dealer},transmission_Automatic={transmission_Automatic},owner_First.Owner={owner1st},owner_Fourth...Above.Owner={owner4th},owner_Second.Owner={owner2nd})"
+    robjects.r(data)
+    result = robjects.r(f'predict(model, new_data)')
+    return (f"The price will be around IDR {int(result[0])}")
     
   
 def main():
     
-    st.set_page_config(layout='wide', page_title="INPO MASZEEHHH", page_icon="😱")
+    st.set_page_config(layout='wide', page_title="INPO MASZEEHHH", page_icon="🚗")
 
     # giving a title
-    header = Image.open('./web-app/images/header1.png')
+    header = Image.open("./web-app/images/header1.png")
   
     st.image(header)
     st.title('Used Car Price Prediction Web App')
@@ -95,10 +95,10 @@ def main():
 
 
     # creating a button for Prediction
-    
+
     if st.button('Price Prediction'):
-        price = used_car_price_prediction_with_sav([km_driven, mileage, engine, max_power, seats, age, fuel_CNG, fuel_Diesel, fuel_LPG, seller_type_Dealer, transmission_Automatic, owner1st, owner4th, owner2nd])
-        
+
+        price = used_car_price_prediction(km_driven, mileage, engine, max_power, seats, age, fuel_CNG, fuel_Diesel, fuel_LPG, seller_type_Dealer, transmission_Automatic, owner1st, owner4th, owner2nd)
         
     st.success(price)
     
@@ -109,17 +109,3 @@ def main():
 if __name__ == '__main__':
     main()
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
-    
-  
