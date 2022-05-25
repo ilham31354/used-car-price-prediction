@@ -10,7 +10,7 @@ base = rpackages.importr('base')
 utils = rpackages.importr('utils')
 
 # loading the saved model
-randomForest = robjects.r('install.packages("randomForest")')
+randomForest = robjects.r('install.packages("random")')
 
 randomForest = rpackages.importr('randomForest')
 loaded_model = robjects.r('model = readRDS(".//web-app//model//rf_model.rda")')
