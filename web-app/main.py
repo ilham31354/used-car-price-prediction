@@ -5,11 +5,13 @@ import rpy2.robjects as robjects
 import rpy2.robjects.packages as rpackages
 from rpy2.robjects.vectors import StrVector
 
+base = rpackages.importr('base')
+utils = rpackages.importr('utils')
 
 # loading the saved model
 # robjects.r('install.packages("randomForest")')
-robjects.r('library(stats)')
-rpackages.importr('randomForest')
+
+randomForest = rpackages.importr('randomForest')
 loaded_model = robjects.r('model = readRDS(".//web-app//model//rf_model.rda")')
 
 
