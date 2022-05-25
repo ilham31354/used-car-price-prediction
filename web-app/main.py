@@ -1,6 +1,7 @@
 import numpy as np
 import streamlit as st
 from PIL import Image
+import rpy2
 import rpy2.robjects as robjects
 import rpy2.robjects.packages as rpackages
 from rpy2.robjects.vectors import StrVector
