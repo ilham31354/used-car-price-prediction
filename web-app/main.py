@@ -7,8 +7,9 @@ from rpy2.robjects.vectors import StrVector
 
 
 # loading the saved model
-robjects.r('install.packages("randomForest")')
-randomForest = rpackages.importr('randomForest')
+randomForest = robjects.r('install.packages("randomForest")')
+randomForest = robjects.r('library(randomForest)')
+# randomForest = rpackages.importr('randomForest')
 loaded_model = robjects.r('model = readRDS(".//web-app//model//rf_model.rda")')
 
 
