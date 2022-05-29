@@ -24,12 +24,14 @@ def used_car_price_prediction(km_driven, mileage, engine, max_power, seats, age,
     data = f"new_data = data.frame(km_driven={km_driven},mileage={mileage},engine={engine},max_power={max_power},seats={seats},age={age},fuel_CNG={fuel_CNG},fuel_Diesel={fuel_Diesel},fuel_LPG={fuel_LPG},seller_type_Dealer={seller_type_Dealer},transmission_Automatic={transmission_Automatic},owner_First.Owner={owner1st},owner_Fourth...Above.Owner={owner4th},owner_Second.Owner={owner2nd})"
     robjects.r(data)
     result = robjects.r(f'predict(model, new_data)')
-    return (f"The price will be around IDR {int(result[0])}")
+    amount = int(result[0])
+    price = "IDR {:,.2f}".format(amount)
+    return (f"The price will be around {price}")
     
   
 def main():
     
-    st.set_page_config(layout='wide', page_title="INPO MASZEEHHH", page_icon="🚗")
+    st.set_page_config(layout='wide', page_title="INPO MOBIL MASZEEHH", page_icon="👀")
 
     # giving a title
     header = Image.open("./web-app/images/header1.png")
@@ -45,14 +47,14 @@ def main():
     max_power = st.slider('Max Power (Brake Horse Power)', min_value=45, max_value=180,value=80,step=5)
     seats = st.select_slider("Seats", [2,4,5,6,7,8,9,10,14], value=5)
     year = st.slider('Year', min_value=1997, max_value=2022,value=2007,step=1)
-    fuel = st.selectbox('Fuel', ('Diesel','LPG','Petrol','CNG'))
+    fuel = st.selectbox('Fuel', ('Diesel','Petrol','LPG','CNG'))
     seller_type = st.selectbox("Type of Seller",('Dealer', 'Individual'))
     transmission = st.selectbox("Transmission",("Automatic","Manual"))
     owner = st.selectbox("Type Owner",("First Owner","Second Owner","Third Owner","Fourth and Above Owner"))
 
     
     # code for Prediction
-    price = 'In Data We Believe...'
+    price = 'Make sure the input value is correct'
     
     # transforming data
     if year!="":
