@@ -9,7 +9,7 @@ from rpy2.robjects.vectors import StrVector
 r = robjects.r('dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE)')  # create personal library
 r = robjects.r('.libPaths(Sys.getenv("R_LIBS_USER"))')
 
-r = robjects.r('install.packages("https://cran.r-project.org/src/contrib/Archive/randomForest/randomForest_4.6-14.tar.gz", repos=NULL, type="source")')
+# r = robjects.r('install.packages("https://cran.r-project.org/src/contrib/Archive/randomForest/randomForest_4.6-14.tar.gz", repos=NULL, type="source")')
 r = robjects.r('library(randomForest)')
 
 
