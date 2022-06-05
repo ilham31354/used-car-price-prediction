@@ -31,10 +31,10 @@ def used_car_price_prediction(km_driven, mileage, engine, max_power, seats, age,
   
 def main():
     
-    st.set_page_config(layout='wide', page_title="INPO MOBIL MASZEEHH", page_icon="👀")
+    st.set_page_config(layout='wide', page_title="INPO MOBIL", page_icon="👀")
 
     # giving a title
-    header = Image.open("./web-app/images/header1.png")
+    header = Image.open("./web-app/images/header2.png")
   
     st.image(header)
     st.title('Used Car Price Prediction Web App')
