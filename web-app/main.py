@@ -75,7 +75,7 @@ def main():
     
     # getting the input data from the user
         
-    km_driven = st.text_input("KM Driven",0)
+    
     mileage = st.slider('Mile Age (Kilometres per Litre)', min_value=10, max_value=40,value=13,step=1)
     engine = st.slider('Engine (CC)', min_value=800, max_value=2700,value=1200,step=100)
     max_power = st.slider('Max Power (Brake Horse Power)', min_value=45, max_value=180,value=80,step=5)
@@ -85,6 +85,7 @@ def main():
     seller_type = st.selectbox("Type of Seller",('Dealer', 'Individual'))
     transmission = st.selectbox("Transmission",("Automatic","Manual"))
     owner = st.selectbox("Type Owner",("First Owner","Second Owner","Third Owner","Fourth and Above Owner"))
+    km_driven = st.text_input("KM Driven",0)
    
     # code for Prediction
     price = 'Make sure the input value is correct'
